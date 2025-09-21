@@ -65,4 +65,20 @@ class ParkingTicket:
                 f"Fine: ${self.fine:.2f}\n"
                 f"Issued by officer: {self.officer_name}, Badege #: {self.badge_number}\n")
 
+class PolicerOfficer:
+    def __init__(self, name, badge_number):
+        self.name = name
+        self.badge_number = badge_number
+
+    def inspect_car(self, parked_car, parking_meter):
+        parked_time = parked_car.minutes_parked
+        purchased_time = parking_meter.minutes_purchased
+
+        if parked_time > purchased_time:
+            illegal_minutes = parked_time - purchased_time
+            return ParkingTicket(parked_car, self, illegal_minutes)
+        else:
+            return None
+
+
 
