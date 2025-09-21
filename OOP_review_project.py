@@ -31,4 +31,29 @@ class BasicShape(ABC):
     def calc_area(self):
         pass
 
+class circle(BasicShape):
+    def __init__(self, x, y, r, n="circle"):
+        super().__init__(n)
+        self._x_center = x
+        self._y_center = y
+        self._radius = r
+        self.calc_area()
+
+    def calc_area(self):
+        self.area = math.pi * (self._radius ** 2)
+    
+    @property
+    def y_center(self):
+        return self._y_center
+
+    @property
+    def radius(self):
+        return self._radius
+
+    @radius.setter
+    def radius(self, value):
+        self._radius = value
+        self.calc_area()
+
+
 
