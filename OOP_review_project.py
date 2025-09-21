@@ -27,3 +27,19 @@ class ParkedCar:
 
         def __str__(self):
             return f"{self.color} {self.make} {self.model}, License: {self.license_number}, Minutes Parked: {self.minutes_parked}"
+
+class ParkingMeter:
+    def __init__(self, minutes_purchased=60):
+        self._minutes_purchased = 60
+        self.minutes_purchased = minutes_purchased
+
+    @property
+    def minutes_purchased(self):
+        return self._minutes_purchased
+
+    @minutes_purchased.setter
+    def minutes_purchased(self, value):
+        if value <= 0:
+            raise ValueError("Minutes purchased must be more than zero.")
+        self._minutes_purchased = value
+
